@@ -1,0 +1,70 @@
+Type.registerNamespace('PSCPortal.Services');
+PSCPortal.Services.HRMService = function() {
+    PSCPortal.Services.HRMService.initializeBase(this);
+    this._timeout = 0;
+    this._userContext = null;
+    this._succeeded = null;
+    this._failed = null;
+}
+PSCPortal.Services.HRMService.prototype = {
+    _get_path: function() {
+        var p = this.get_path();
+        if (p)
+            return p;
+        else
+            return PSCPortal.Services.HRMService._staticInstance.get_path();
+    },
+    HelloWorld: function(makyluong, succeededCallback, failedCallback, userContext) {
+        return this._invoke(this._get_path(), 'HelloWorld', false, {
+            makyluong: makyluong
+        }, succeededCallback, failedCallback, userContext);
+    }
+}
+PSCPortal.Services.HRMService.registerClass('PSCPortal.Services.HRMService', Sys.Net.WebServiceProxy);
+PSCPortal.Services.HRMService._staticInstance = new PSCPortal.Services.HRMService();
+PSCPortal.Services.HRMService.set_path = function(value) {
+    PSCPortal.Services.HRMService._staticInstance.set_path(value);
+}
+PSCPortal.Services.HRMService.get_path = function() {
+    return PSCPortal.Services.HRMService._staticInstance.get_path();
+}
+PSCPortal.Services.HRMService.set_timeout = function(value) {
+    PSCPortal.Services.HRMService._staticInstance.set_timeout(value);
+}
+PSCPortal.Services.HRMService.get_timeout = function() {
+    return PSCPortal.Services.HRMService._staticInstance.get_timeout();
+}
+PSCPortal.Services.HRMService.set_defaultUserContext = function(value) {
+    PSCPortal.Services.HRMService._staticInstance.set_defaultUserContext(value);
+}
+PSCPortal.Services.HRMService.get_defaultUserContext = function() {
+    return PSCPortal.Services.HRMService._staticInstance.get_defaultUserContext();
+}
+PSCPortal.Services.HRMService.set_defaultSucceededCallback = function(value) {
+    PSCPortal.Services.HRMService._staticInstance.set_defaultSucceededCallback(value);
+}
+PSCPortal.Services.HRMService.get_defaultSucceededCallback = function() {
+    return PSCPortal.Services.HRMService._staticInstance.get_defaultSucceededCallback();
+}
+PSCPortal.Services.HRMService.set_defaultFailedCallback = function(value) {
+    PSCPortal.Services.HRMService._staticInstance.set_defaultFailedCallback(value);
+}
+PSCPortal.Services.HRMService.get_defaultFailedCallback = function() {
+    return PSCPortal.Services.HRMService._staticInstance.get_defaultFailedCallback();
+}
+PSCPortal.Services.HRMService.set_enableJsonp = function(value) {
+    PSCPortal.Services.HRMService._staticInstance.set_enableJsonp(value);
+}
+PSCPortal.Services.HRMService.get_enableJsonp = function() {
+    return PSCPortal.Services.HRMService._staticInstance.get_enableJsonp();
+}
+PSCPortal.Services.HRMService.set_jsonpCallbackParameter = function(value) {
+    PSCPortal.Services.HRMService._staticInstance.set_jsonpCallbackParameter(value);
+}
+PSCPortal.Services.HRMService.get_jsonpCallbackParameter = function() {
+    return PSCPortal.Services.HRMService._staticInstance.get_jsonpCallbackParameter();
+}
+PSCPortal.Services.HRMService.set_path("/myschool/Services/HRMService.asmx/js");
+PSCPortal.Services.HRMService.HelloWorld = function(makyluong, onSuccess, onFailed, userContext) {
+    PSCPortal.Services.HRMService._staticInstance.HelloWorld(makyluong, onSuccess, onFailed, userContext);
+}

@@ -1,0 +1,114 @@
+Type.registerNamespace('Portlets_Portal.Modules.UIS.Services');
+Portlets_Portal.Modules.UIS.Services.Portlets_SV = function() {
+    Portlets_Portal.Modules.UIS.Services.Portlets_SV.initializeBase(this);
+    this._timeout = 0;
+    this._userContext = null;
+    this._succeeded = null;
+    this._failed = null;
+}
+Portlets_Portal.Modules.UIS.Services.Portlets_SV.prototype = {
+    _get_path: function() {
+        var p = this.get_path();
+        if (p)
+            return p;
+        else
+            return Portlets_Portal.Modules.UIS.Services.Portlets_SV._staticInstance.get_path();
+    },
+    getStudentInfoForStaff: function(id, succeededCallback, failedCallback, userContext) {
+        return this._invoke(this._get_path(), 'getStudentInfoForStaff', false, {
+            id: id
+        }, succeededCallback, failedCallback, userContext);
+    },
+    ExportAssignmentMarksToImages: function(ScheduleStudyUnitID, succeededCallback, failedCallback, userContext) {
+        return this._invoke(this._get_path(), 'ExportAssignmentMarksToImages', false, {
+            ScheduleStudyUnitID: ScheduleStudyUnitID
+        }, succeededCallback, failedCallback, userContext);
+    },
+    GetAssignmentMarksDetailToTableHtml: function(StudentID, StudyUnitID, ClassCss, succeededCallback, failedCallback, userContext) {
+        return this._invoke(this._get_path(), 'GetAssignmentMarksDetailToTableHtml', false, {
+            StudentID: StudentID,
+            StudyUnitID: StudyUnitID,
+            ClassCss: ClassCss
+        }, succeededCallback, failedCallback, userContext);
+    },
+    ResetMatKhauSinhVien: function(StudentID, Email, succeededCallback, failedCallback, userContext) {
+        return this._invoke(this._get_path(), 'ResetMatKhauSinhVien', false, {
+            StudentID: StudentID,
+            Email: Email
+        }, succeededCallback, failedCallback, userContext);
+    },
+    GetEmailSinhVien: function(StudentID, succeededCallback, failedCallback, userContext) {
+        return this._invoke(this._get_path(), 'GetEmailSinhVien', false, {
+            StudentID: StudentID
+        }, succeededCallback, failedCallback, userContext);
+    },
+    CapNhatEmailSinhVien: function(StudentID, Email, succeededCallback, failedCallback, userContext) {
+        return this._invoke(this._get_path(), 'CapNhatEmailSinhVien', false, {
+            StudentID: StudentID,
+            Email: Email
+        }, succeededCallback, failedCallback, userContext);
+    }
+}
+Portlets_Portal.Modules.UIS.Services.Portlets_SV.registerClass('Portlets_Portal.Modules.UIS.Services.Portlets_SV', Sys.Net.WebServiceProxy);
+Portlets_Portal.Modules.UIS.Services.Portlets_SV._staticInstance = new Portlets_Portal.Modules.UIS.Services.Portlets_SV();
+Portlets_Portal.Modules.UIS.Services.Portlets_SV.set_path = function(value) {
+    Portlets_Portal.Modules.UIS.Services.Portlets_SV._staticInstance.set_path(value);
+}
+Portlets_Portal.Modules.UIS.Services.Portlets_SV.get_path = function() {
+    return Portlets_Portal.Modules.UIS.Services.Portlets_SV._staticInstance.get_path();
+}
+Portlets_Portal.Modules.UIS.Services.Portlets_SV.set_timeout = function(value) {
+    Portlets_Portal.Modules.UIS.Services.Portlets_SV._staticInstance.set_timeout(value);
+}
+Portlets_Portal.Modules.UIS.Services.Portlets_SV.get_timeout = function() {
+    return Portlets_Portal.Modules.UIS.Services.Portlets_SV._staticInstance.get_timeout();
+}
+Portlets_Portal.Modules.UIS.Services.Portlets_SV.set_defaultUserContext = function(value) {
+    Portlets_Portal.Modules.UIS.Services.Portlets_SV._staticInstance.set_defaultUserContext(value);
+}
+Portlets_Portal.Modules.UIS.Services.Portlets_SV.get_defaultUserContext = function() {
+    return Portlets_Portal.Modules.UIS.Services.Portlets_SV._staticInstance.get_defaultUserContext();
+}
+Portlets_Portal.Modules.UIS.Services.Portlets_SV.set_defaultSucceededCallback = function(value) {
+    Portlets_Portal.Modules.UIS.Services.Portlets_SV._staticInstance.set_defaultSucceededCallback(value);
+}
+Portlets_Portal.Modules.UIS.Services.Portlets_SV.get_defaultSucceededCallback = function() {
+    return Portlets_Portal.Modules.UIS.Services.Portlets_SV._staticInstance.get_defaultSucceededCallback();
+}
+Portlets_Portal.Modules.UIS.Services.Portlets_SV.set_defaultFailedCallback = function(value) {
+    Portlets_Portal.Modules.UIS.Services.Portlets_SV._staticInstance.set_defaultFailedCallback(value);
+}
+Portlets_Portal.Modules.UIS.Services.Portlets_SV.get_defaultFailedCallback = function() {
+    return Portlets_Portal.Modules.UIS.Services.Portlets_SV._staticInstance.get_defaultFailedCallback();
+}
+Portlets_Portal.Modules.UIS.Services.Portlets_SV.set_enableJsonp = function(value) {
+    Portlets_Portal.Modules.UIS.Services.Portlets_SV._staticInstance.set_enableJsonp(value);
+}
+Portlets_Portal.Modules.UIS.Services.Portlets_SV.get_enableJsonp = function() {
+    return Portlets_Portal.Modules.UIS.Services.Portlets_SV._staticInstance.get_enableJsonp();
+}
+Portlets_Portal.Modules.UIS.Services.Portlets_SV.set_jsonpCallbackParameter = function(value) {
+    Portlets_Portal.Modules.UIS.Services.Portlets_SV._staticInstance.set_jsonpCallbackParameter(value);
+}
+Portlets_Portal.Modules.UIS.Services.Portlets_SV.get_jsonpCallbackParameter = function() {
+    return Portlets_Portal.Modules.UIS.Services.Portlets_SV._staticInstance.get_jsonpCallbackParameter();
+}
+Portlets_Portal.Modules.UIS.Services.Portlets_SV.set_path("/Modules/UIS/Services/Portlets_SV.asmx");
+Portlets_Portal.Modules.UIS.Services.Portlets_SV.getStudentInfoForStaff = function(id, onSuccess, onFailed, userContext) {
+    Portlets_Portal.Modules.UIS.Services.Portlets_SV._staticInstance.getStudentInfoForStaff(id, onSuccess, onFailed, userContext);
+}
+Portlets_Portal.Modules.UIS.Services.Portlets_SV.ExportAssignmentMarksToImages = function(ScheduleStudyUnitID, onSuccess, onFailed, userContext) {
+    Portlets_Portal.Modules.UIS.Services.Portlets_SV._staticInstance.ExportAssignmentMarksToImages(ScheduleStudyUnitID, onSuccess, onFailed, userContext);
+}
+Portlets_Portal.Modules.UIS.Services.Portlets_SV.GetAssignmentMarksDetailToTableHtml = function(StudentID, StudyUnitID, ClassCss, onSuccess, onFailed, userContext) {
+    Portlets_Portal.Modules.UIS.Services.Portlets_SV._staticInstance.GetAssignmentMarksDetailToTableHtml(StudentID, StudyUnitID, ClassCss, onSuccess, onFailed, userContext);
+}
+Portlets_Portal.Modules.UIS.Services.Portlets_SV.ResetMatKhauSinhVien = function(StudentID, Email, onSuccess, onFailed, userContext) {
+    Portlets_Portal.Modules.UIS.Services.Portlets_SV._staticInstance.ResetMatKhauSinhVien(StudentID, Email, onSuccess, onFailed, userContext);
+}
+Portlets_Portal.Modules.UIS.Services.Portlets_SV.GetEmailSinhVien = function(StudentID, onSuccess, onFailed, userContext) {
+    Portlets_Portal.Modules.UIS.Services.Portlets_SV._staticInstance.GetEmailSinhVien(StudentID, onSuccess, onFailed, userContext);
+}
+Portlets_Portal.Modules.UIS.Services.Portlets_SV.CapNhatEmailSinhVien = function(StudentID, Email, onSuccess, onFailed, userContext) {
+    Portlets_Portal.Modules.UIS.Services.Portlets_SV._staticInstance.CapNhatEmailSinhVien(StudentID, Email, onSuccess, onFailed, userContext);
+}

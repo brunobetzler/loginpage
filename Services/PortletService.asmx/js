@@ -1,0 +1,74 @@
+Type.registerNamespace('PSCPortal.Services');
+PSCPortal.Services.PortletService = function() {
+    PSCPortal.Services.PortletService.initializeBase(this);
+    this._timeout = 0;
+    this._userContext = null;
+    this._succeeded = null;
+    this._failed = null;
+}
+PSCPortal.Services.PortletService.prototype = {
+    _get_path: function() {
+        var p = this.get_path();
+        if (p)
+            return p;
+        else
+            return PSCPortal.Services.PortletService._staticInstance.get_path();
+    },
+    ArticleUserGroup: function(topicId, roleId, indexStart, cout, sort, succeededCallback, failedCallback, userContext) {
+        return this._invoke(this._get_path(), 'ArticleUserGroup', false, {
+            topicId: topicId,
+            roleId: roleId,
+            indexStart: indexStart,
+            cout: cout,
+            sort: sort
+        }, succeededCallback, failedCallback, userContext);
+    }
+}
+PSCPortal.Services.PortletService.registerClass('PSCPortal.Services.PortletService', Sys.Net.WebServiceProxy);
+PSCPortal.Services.PortletService._staticInstance = new PSCPortal.Services.PortletService();
+PSCPortal.Services.PortletService.set_path = function(value) {
+    PSCPortal.Services.PortletService._staticInstance.set_path(value);
+}
+PSCPortal.Services.PortletService.get_path = function() {
+    return PSCPortal.Services.PortletService._staticInstance.get_path();
+}
+PSCPortal.Services.PortletService.set_timeout = function(value) {
+    PSCPortal.Services.PortletService._staticInstance.set_timeout(value);
+}
+PSCPortal.Services.PortletService.get_timeout = function() {
+    return PSCPortal.Services.PortletService._staticInstance.get_timeout();
+}
+PSCPortal.Services.PortletService.set_defaultUserContext = function(value) {
+    PSCPortal.Services.PortletService._staticInstance.set_defaultUserContext(value);
+}
+PSCPortal.Services.PortletService.get_defaultUserContext = function() {
+    return PSCPortal.Services.PortletService._staticInstance.get_defaultUserContext();
+}
+PSCPortal.Services.PortletService.set_defaultSucceededCallback = function(value) {
+    PSCPortal.Services.PortletService._staticInstance.set_defaultSucceededCallback(value);
+}
+PSCPortal.Services.PortletService.get_defaultSucceededCallback = function() {
+    return PSCPortal.Services.PortletService._staticInstance.get_defaultSucceededCallback();
+}
+PSCPortal.Services.PortletService.set_defaultFailedCallback = function(value) {
+    PSCPortal.Services.PortletService._staticInstance.set_defaultFailedCallback(value);
+}
+PSCPortal.Services.PortletService.get_defaultFailedCallback = function() {
+    return PSCPortal.Services.PortletService._staticInstance.get_defaultFailedCallback();
+}
+PSCPortal.Services.PortletService.set_enableJsonp = function(value) {
+    PSCPortal.Services.PortletService._staticInstance.set_enableJsonp(value);
+}
+PSCPortal.Services.PortletService.get_enableJsonp = function() {
+    return PSCPortal.Services.PortletService._staticInstance.get_enableJsonp();
+}
+PSCPortal.Services.PortletService.set_jsonpCallbackParameter = function(value) {
+    PSCPortal.Services.PortletService._staticInstance.set_jsonpCallbackParameter(value);
+}
+PSCPortal.Services.PortletService.get_jsonpCallbackParameter = function() {
+    return PSCPortal.Services.PortletService._staticInstance.get_jsonpCallbackParameter();
+}
+PSCPortal.Services.PortletService.set_path("/myschool/Services/PortletService.asmx/js");
+PSCPortal.Services.PortletService.ArticleUserGroup = function(topicId, roleId, indexStart, cout, sort, onSuccess, onFailed, userContext) {
+    PSCPortal.Services.PortletService._staticInstance.ArticleUserGroup(topicId, roleId, indexStart, cout, sort, onSuccess, onFailed, userContext);
+}

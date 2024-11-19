@@ -1,0 +1,72 @@
+Type.registerNamespace('PSCPortal.Services');
+PSCPortal.Services.PortletProxy = function() {
+    PSCPortal.Services.PortletProxy.initializeBase(this);
+    this._timeout = 0;
+    this._userContext = null;
+    this._succeeded = null;
+    this._failed = null;
+}
+PSCPortal.Services.PortletProxy.prototype = {
+    _get_path: function() {
+        var p = this.get_path();
+        if (p)
+            return p;
+        else
+            return PSCPortal.Services.PortletProxy._staticInstance.get_path();
+    },
+    CallMethod: function(fullClassName, methodName, objects, succeededCallback, failedCallback, userContext) {
+        return this._invoke(this._get_path(), 'CallMethod', false, {
+            fullClassName: fullClassName,
+            methodName: methodName,
+            objects: objects
+        }, succeededCallback, failedCallback, userContext);
+    }
+}
+PSCPortal.Services.PortletProxy.registerClass('PSCPortal.Services.PortletProxy', Sys.Net.WebServiceProxy);
+PSCPortal.Services.PortletProxy._staticInstance = new PSCPortal.Services.PortletProxy();
+PSCPortal.Services.PortletProxy.set_path = function(value) {
+    PSCPortal.Services.PortletProxy._staticInstance.set_path(value);
+}
+PSCPortal.Services.PortletProxy.get_path = function() {
+    return PSCPortal.Services.PortletProxy._staticInstance.get_path();
+}
+PSCPortal.Services.PortletProxy.set_timeout = function(value) {
+    PSCPortal.Services.PortletProxy._staticInstance.set_timeout(value);
+}
+PSCPortal.Services.PortletProxy.get_timeout = function() {
+    return PSCPortal.Services.PortletProxy._staticInstance.get_timeout();
+}
+PSCPortal.Services.PortletProxy.set_defaultUserContext = function(value) {
+    PSCPortal.Services.PortletProxy._staticInstance.set_defaultUserContext(value);
+}
+PSCPortal.Services.PortletProxy.get_defaultUserContext = function() {
+    return PSCPortal.Services.PortletProxy._staticInstance.get_defaultUserContext();
+}
+PSCPortal.Services.PortletProxy.set_defaultSucceededCallback = function(value) {
+    PSCPortal.Services.PortletProxy._staticInstance.set_defaultSucceededCallback(value);
+}
+PSCPortal.Services.PortletProxy.get_defaultSucceededCallback = function() {
+    return PSCPortal.Services.PortletProxy._staticInstance.get_defaultSucceededCallback();
+}
+PSCPortal.Services.PortletProxy.set_defaultFailedCallback = function(value) {
+    PSCPortal.Services.PortletProxy._staticInstance.set_defaultFailedCallback(value);
+}
+PSCPortal.Services.PortletProxy.get_defaultFailedCallback = function() {
+    return PSCPortal.Services.PortletProxy._staticInstance.get_defaultFailedCallback();
+}
+PSCPortal.Services.PortletProxy.set_enableJsonp = function(value) {
+    PSCPortal.Services.PortletProxy._staticInstance.set_enableJsonp(value);
+}
+PSCPortal.Services.PortletProxy.get_enableJsonp = function() {
+    return PSCPortal.Services.PortletProxy._staticInstance.get_enableJsonp();
+}
+PSCPortal.Services.PortletProxy.set_jsonpCallbackParameter = function(value) {
+    PSCPortal.Services.PortletProxy._staticInstance.set_jsonpCallbackParameter(value);
+}
+PSCPortal.Services.PortletProxy.get_jsonpCallbackParameter = function() {
+    return PSCPortal.Services.PortletProxy._staticInstance.get_jsonpCallbackParameter();
+}
+PSCPortal.Services.PortletProxy.set_path("/myschool/Services/PortletProxy.asmx/js");
+PSCPortal.Services.PortletProxy.CallMethod = function(fullClassName, methodName, objects, onSuccess, onFailed, userContext) {
+    PSCPortal.Services.PortletProxy._staticInstance.CallMethod(fullClassName, methodName, objects, onSuccess, onFailed, userContext);
+}

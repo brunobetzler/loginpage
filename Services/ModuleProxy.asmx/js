@@ -1,0 +1,72 @@
+Type.registerNamespace('PSCPortal.Services');
+PSCPortal.Services.ModuleProxy = function() {
+    PSCPortal.Services.ModuleProxy.initializeBase(this);
+    this._timeout = 0;
+    this._userContext = null;
+    this._succeeded = null;
+    this._failed = null;
+}
+PSCPortal.Services.ModuleProxy.prototype = {
+    _get_path: function() {
+        var p = this.get_path();
+        if (p)
+            return p;
+        else
+            return PSCPortal.Services.ModuleProxy._staticInstance.get_path();
+    },
+    CallMethod: function(fullClassName, methodName, objects, succeededCallback, failedCallback, userContext) {
+        return this._invoke(this._get_path(), 'CallMethod', false, {
+            fullClassName: fullClassName,
+            methodName: methodName,
+            objects: objects
+        }, succeededCallback, failedCallback, userContext);
+    }
+}
+PSCPortal.Services.ModuleProxy.registerClass('PSCPortal.Services.ModuleProxy', Sys.Net.WebServiceProxy);
+PSCPortal.Services.ModuleProxy._staticInstance = new PSCPortal.Services.ModuleProxy();
+PSCPortal.Services.ModuleProxy.set_path = function(value) {
+    PSCPortal.Services.ModuleProxy._staticInstance.set_path(value);
+}
+PSCPortal.Services.ModuleProxy.get_path = function() {
+    return PSCPortal.Services.ModuleProxy._staticInstance.get_path();
+}
+PSCPortal.Services.ModuleProxy.set_timeout = function(value) {
+    PSCPortal.Services.ModuleProxy._staticInstance.set_timeout(value);
+}
+PSCPortal.Services.ModuleProxy.get_timeout = function() {
+    return PSCPortal.Services.ModuleProxy._staticInstance.get_timeout();
+}
+PSCPortal.Services.ModuleProxy.set_defaultUserContext = function(value) {
+    PSCPortal.Services.ModuleProxy._staticInstance.set_defaultUserContext(value);
+}
+PSCPortal.Services.ModuleProxy.get_defaultUserContext = function() {
+    return PSCPortal.Services.ModuleProxy._staticInstance.get_defaultUserContext();
+}
+PSCPortal.Services.ModuleProxy.set_defaultSucceededCallback = function(value) {
+    PSCPortal.Services.ModuleProxy._staticInstance.set_defaultSucceededCallback(value);
+}
+PSCPortal.Services.ModuleProxy.get_defaultSucceededCallback = function() {
+    return PSCPortal.Services.ModuleProxy._staticInstance.get_defaultSucceededCallback();
+}
+PSCPortal.Services.ModuleProxy.set_defaultFailedCallback = function(value) {
+    PSCPortal.Services.ModuleProxy._staticInstance.set_defaultFailedCallback(value);
+}
+PSCPortal.Services.ModuleProxy.get_defaultFailedCallback = function() {
+    return PSCPortal.Services.ModuleProxy._staticInstance.get_defaultFailedCallback();
+}
+PSCPortal.Services.ModuleProxy.set_enableJsonp = function(value) {
+    PSCPortal.Services.ModuleProxy._staticInstance.set_enableJsonp(value);
+}
+PSCPortal.Services.ModuleProxy.get_enableJsonp = function() {
+    return PSCPortal.Services.ModuleProxy._staticInstance.get_enableJsonp();
+}
+PSCPortal.Services.ModuleProxy.set_jsonpCallbackParameter = function(value) {
+    PSCPortal.Services.ModuleProxy._staticInstance.set_jsonpCallbackParameter(value);
+}
+PSCPortal.Services.ModuleProxy.get_jsonpCallbackParameter = function() {
+    return PSCPortal.Services.ModuleProxy._staticInstance.get_jsonpCallbackParameter();
+}
+PSCPortal.Services.ModuleProxy.set_path("/myschool/Services/ModuleProxy.asmx/js");
+PSCPortal.Services.ModuleProxy.CallMethod = function(fullClassName, methodName, objects, onSuccess, onFailed, userContext) {
+    PSCPortal.Services.ModuleProxy._staticInstance.CallMethod(fullClassName, methodName, objects, onSuccess, onFailed, userContext);
+}
